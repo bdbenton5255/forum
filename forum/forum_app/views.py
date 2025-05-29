@@ -23,3 +23,13 @@ def addInForum(request):
             return redirect('/')
         context = {'form':form}
         return render(request,'addInForum.html',context)
+
+def addInDiscussion(request):
+    form = CreateInDiscussion()
+    if request.method == 'POST':
+        forum = CreateInDiscussion(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form':form}
+    return render(request,'addInDiscussion.html',context)
