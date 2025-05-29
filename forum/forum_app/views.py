@@ -13,3 +13,13 @@ def home(request):
                 'count':count,
                 'discusisons':discussions}
     return render(request,'home.html',context)
+
+def addInForum(request):
+    form = CreateInForum()
+    if request.method == 'POST':
+        forum = CreateInForum(request.POST)
+        if form.is_valid():
+            forum.save()
+            return redirect('/')
+        context = {'form':form}
+        return render(request,'addInForum.html',context)
