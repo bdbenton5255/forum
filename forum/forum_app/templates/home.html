@@ -37,14 +37,14 @@
                         email- {{forum.email}}
                         <hr>
                         <h4>Views from other users</h4>
-                        {{% for discuss in discussions %}}
-                            {{% for objs in discuss %}}
-                                {{% if objs.forum == forum %}}
+                        {%for discuss in discussions%}
+                            {%for objs in discuss%}
+                                {% if objs.forum == forum %}
                                     {{objs.discuss}}
                                     <br>
-                                {{% endif %}}
-                            {{% endfor %}}
-                        {{% endfor %}}
+                                {% endif %}
+                            {%endfor%}
+                        {%endfor%}
                         <form method="POST" action="{% url 'addInDiscussion' %}">
                             {% csrf_token %}
                         <button class="btn btn-success" style="width:fit_content; padding: 4px; margin: 10px;">Add more</button>
